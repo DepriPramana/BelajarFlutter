@@ -1,93 +1,148 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final Random _random = Random();
+
+  Color _color = Color(0xFFFFFFFF);
+  Color color2 = Color(0xFFFF0000);
+  void changeColor() {
+    setState(() {
+      _color = Color.fromARGB(
+        //or with fromRGBO with fourth arg as _random.nextDouble(),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+      );
+      color2 = Color.fromARGB(
+        //or with fromRGBO with fourth arg as _random.nextDouble(),
+        _random.nextInt(253),
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+      );
+    });
+  }
+
+  bool isAccepted = false;
+  Color targetColor;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Belajar Image"),
-          ),
-          body: Column(
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.red,
-                        child: Image(
-                            image: NetworkImage(
-                                "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
-                      ),
+        appBar: AppBar(
+          title: Text("Belajar Drag & Drop"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Draggable<Color>(
+                  data: _color,
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: _color,
+                      shape: StadiumBorder(),
+                      elevation: 3,
                     ),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.blue,
-                        child: Image(
-                            image: NetworkImage(
-                                "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
-                      ),
+                  ),
+                  childWhenDragging: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: Colors.grey.withOpacity(0.7),
+                      shape: StadiumBorder(),
+                      elevation: 3,
                     ),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.blue,
-                        child: Image(
-                            image: NetworkImage(
-                                "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
-                      ),
-                    )
-                  ],
+                  ),
+                  feedback: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: _color.withOpacity(0.8),
+                      shape: StadiumBorder(),
+                      elevation: 3,
+                    ),
+                  ),
                 ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Row(
-                  children: <Widget>[
-                    Spacer(flex: 1),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.black12,
-                        padding: EdgeInsets.all(10),
-                        child: Image(image: AssetImage("images/pngwave.png")),
-                      ),
+                Draggable<Color>(
+                  data: color2,
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: color2,
+                      shape: StadiumBorder(),
+                      elevation: 3,
                     ),
-                    Spacer(flex: 1),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.orange,
-                        padding: EdgeInsets.all(10),
-                        child: Image(image: AssetImage("images/pngwave.png")),
-                      ),
+                  ),
+                  childWhenDragging: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: Colors.grey.withOpacity(0.7),
+                      shape: StadiumBorder(),
+                      elevation: 3,
                     ),
-                    Spacer(flex: 1),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.amber,
-                        padding: EdgeInsets.all(10),
-                        child: Image(
-                          fit: BoxFit.contain,
-                          image: AssetImage("images/pngwave.png"),
+                  ),
+                  feedback: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Material(
+                      color: color2.withOpacity(0.8),
+                      shape: StadiumBorder(),
+                      elevation: 3,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            DragTarget<Color>(
+              onWillAccept: (value) => true,
+              onAccept: (value) {
+                isAccepted = true;
+                targetColor = value;
+                changeColor();
+              },
+              builder: (context, candidateData, rejectedData) {
+                return (isAccepted)
+                    ? SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Material(
+                          color: targetColor,
+                          shape: StadiumBorder(),
+                          elevation: 0,
                         ),
-                      ),
-                    ),
-                    Spacer(flex: 1),
-                  ],
-                ),
-              ),
-            ],
-          )),
+                      )
+                    : SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Material(
+                          color: Colors.black26,
+                          shape: StadiumBorder(),
+                          elevation: 0,
+                        ),
+                      );
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }

@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
                       flex: 1,
                       child: Container(
                         color: Colors.red,
-                        padding: EdgeInsets.all(10),
                         child: Image(
                             image: NetworkImage(
                                 "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
                       flex: 1,
                       child: Container(
                         color: Colors.blue,
-                        padding: EdgeInsets.all(10),
                         child: Image(
                             image: NetworkImage(
                                 "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
                       flex: 1,
                       child: Container(
                         color: Colors.blue,
-                        padding: EdgeInsets.all(10),
                         child: Image(
                             image: NetworkImage(
                                 "https://mmc.tirto.id/image/otf/700x0/2018/08/01/film-one-piece-wikipedia_ratio-16x9.jpg")),
@@ -55,6 +52,7 @@ class MyApp extends StatelessWidget {
                 flex: 1,
                 child: Row(
                   children: <Widget>[
+                    Spacer(flex: 1),
                     Flexible(
                       flex: 1,
                       child: Container(
@@ -63,6 +61,7 @@ class MyApp extends StatelessWidget {
                         child: Image(image: AssetImage("images/pngwave.png")),
                       ),
                     ),
+                    Spacer(flex: 1),
                     Flexible(
                       flex: 1,
                       child: Container(
@@ -71,6 +70,7 @@ class MyApp extends StatelessWidget {
                         child: Image(image: AssetImage("images/pngwave.png")),
                       ),
                     ),
+                    Spacer(flex: 1),
                     Flexible(
                       flex: 1,
                       child: Container(
@@ -81,7 +81,8 @@ class MyApp extends StatelessWidget {
                           image: AssetImage("images/pngwave.png"),
                         ),
                       ),
-                    )
+                    ),
+                    Spacer(flex: 1),
                   ],
                 ),
               ),

@@ -1,4 +1,7 @@
+import 'package:belajar_listview/card_page.dart';
+import 'package:belajar_listview/list_page.dart';
 import 'package:belajar_listview/second_page.dart';
+import 'package:belajar_listview/textfield_page.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
@@ -30,15 +33,81 @@ class MainPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: RaisedButton(
-          child: Text("Go to second screen"),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return SecondPage();
-            }));
-          },
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(10),
+              children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Text Field Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return TextFieldPage();
+                      }));
+                    },
+                  ),
+                ),
+                Container(
+                  child: RaisedButton(
+                    child: Text("ListView Custom Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MyListView();
+                      }));
+                    },
+                  ),
+                ),
+                Container(
+                  child: RaisedButton(
+                    child: Text("Seconds Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return SecondPage();
+                      }));
+                    },
+                  ),
+                ),
+                Container(
+                  child: RaisedButton(
+                    child: Text("Card Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return CardPage();
+                      }));
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Second screen"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SecondPage();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("Screen Card"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return CardPage();
+                  }));
+                },
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

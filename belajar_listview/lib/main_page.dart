@@ -1,3 +1,4 @@
+import 'package:belajar_listview/button_inwal.dart';
 import 'package:belajar_listview/card_page.dart';
 import 'package:belajar_listview/list_page.dart';
 import 'package:belajar_listview/media_query.dart';
@@ -40,6 +41,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Button Well Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ButtonWell();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Media Query Screen"),

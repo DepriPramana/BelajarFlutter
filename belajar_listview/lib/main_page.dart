@@ -1,5 +1,6 @@
 import 'package:belajar_listview/card_page.dart';
 import 'package:belajar_listview/list_page.dart';
+import 'package:belajar_listview/media_query.dart';
 import 'package:belajar_listview/second_page.dart';
 import 'package:belajar_listview/textfield_page.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Media Query Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MediaQueryPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Text Field Screen"),

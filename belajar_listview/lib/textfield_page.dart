@@ -19,6 +19,12 @@ class _TextFieldPageState extends State<TextFieldPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextField(
+              decoration: InputDecoration(
+                  icon: Icon(Icons.settings),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  prefixIcon: Icon(Icons.settings),
+                  hintText: "data"),
               controller: textEditingController,
               onChanged: (value) {
                 setState(() {});

@@ -2,6 +2,7 @@ import 'package:belajar_listview/button_inwal.dart';
 import 'package:belajar_listview/card_page.dart';
 import 'package:belajar_listview/list_page.dart';
 import 'package:belajar_listview/media_query.dart';
+import 'package:belajar_listview/opacity_page.dart';
 import 'package:belajar_listview/second_page.dart';
 import 'package:belajar_listview/textfield_page.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Opacity Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return OpacityPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Button Well Screen"),

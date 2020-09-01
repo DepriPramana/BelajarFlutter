@@ -1,6 +1,8 @@
 import 'package:belajar_listview/button_inwal.dart';
 import 'package:belajar_listview/card_page.dart';
+import 'package:belajar_listview/hero_animation.dart';
 import 'package:belajar_listview/list_page.dart';
+import 'package:belajar_listview/login_floating.dart';
 import 'package:belajar_listview/media_query.dart';
 import 'package:belajar_listview/opacity_page.dart';
 import 'package:belajar_listview/second_page.dart';
@@ -42,6 +44,28 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Hero Animation"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return HeroAnimation();
+                      }));
+                    },
+                  ),
+                ),
+                Container(
+                  child: RaisedButton(
+                    child: Text("Floating Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return FloatingPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Opacity Screen"),

@@ -1,4 +1,5 @@
 import 'package:belajar_listview/appbar_custom.dart';
+import 'package:belajar_listview/button_colorfull.dart';
 import 'package:belajar_listview/button_inwal.dart';
 import 'package:belajar_listview/card_page.dart';
 import 'package:belajar_listview/hero_animation.dart';
@@ -47,6 +48,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Button Colorfull Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ButtonColorPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("QR Code Screen"),

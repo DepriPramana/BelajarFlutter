@@ -6,6 +6,7 @@ import 'package:belajar_listview/list_page.dart';
 import 'package:belajar_listview/login_floating.dart';
 import 'package:belajar_listview/media_query.dart';
 import 'package:belajar_listview/opacity_page.dart';
+import 'package:belajar_listview/qr_page.dart';
 import 'package:belajar_listview/second_page.dart';
 import 'package:belajar_listview/tabbar_page.dart';
 import 'package:belajar_listview/textfield_page.dart';
@@ -46,6 +47,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("QR Code Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return QRPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Tabbar Screen"),

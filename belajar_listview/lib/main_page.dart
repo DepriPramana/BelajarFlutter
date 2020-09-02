@@ -3,6 +3,7 @@ import 'package:belajar_listview/button_colorfull.dart';
 import 'package:belajar_listview/button_inwal.dart';
 import 'package:belajar_listview/card_page.dart';
 import 'package:belajar_listview/hero_animation.dart';
+import 'package:belajar_listview/image_gradasi.dart';
 import 'package:belajar_listview/list_page.dart';
 import 'package:belajar_listview/login_floating.dart';
 import 'package:belajar_listview/media_query.dart';
@@ -48,6 +49,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("Image Gradasi Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ImageGradasi();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("Button Colorfull Screen"),

@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:belajar_listview/main.dart';
 import 'package:flutter/material.dart';
 
 class ButtonColorPage extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:belajar_listview/apipost_page.dart';
 import 'package:belajar_listview/appbar_custom.dart';
 import 'package:belajar_listview/button_colorfull.dart';
 import 'package:belajar_listview/button_inwal.dart';
@@ -51,6 +52,17 @@ class MainPage extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
+                Container(
+                  child: RaisedButton(
+                    child: Text("API POST Screen"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return APIPostPage();
+                      }));
+                    },
+                  ),
+                ),
                 Container(
                   child: RaisedButton(
                     child: Text("QR Screen"),

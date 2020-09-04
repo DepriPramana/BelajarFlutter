@@ -1,3 +1,4 @@
+import 'package:belajar_listview/model/getapi_model.dart';
 import 'package:belajar_listview/model/posapi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_listview/utils/extensions.dart';
@@ -9,6 +10,7 @@ class APIPostPage extends StatefulWidget {
 
 class _APIPostPageState extends State<APIPostPage> {
   PostResult postResult;
+  GetSingleUser getSingleUser;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,22 @@ class _APIPostPageState extends State<APIPostPage> {
                   });
                 },
                 child: Text("POST DATA"),
+              ),
+            ),
+            Container(
+              child: Text((getSingleUser.isNullOrEmpty())
+                  ? "Hasil Get"
+                  : getSingleUser.name),
+            ),
+            Container(
+              child: RaisedButton(
+                onPressed: () {
+                  GetSingleUser.connectToAPI('2').then((value) {
+                    getSingleUser = value;
+                    setState(() {});
+                  });
+                },
+                child: Text("Get Data"),
               ),
             )
           ],

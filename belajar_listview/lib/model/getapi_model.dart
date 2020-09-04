@@ -7,7 +7,7 @@ class GetSingleUser {
 
   GetSingleUser({this.id, this.name});
 
-  factory GetSingleUser.createSingleUser(Map<String, dynamic> object) {
+  factory GetSingleUser.createSingleUser(Map object) {
     return GetSingleUser(
         id: object['id'].toString(),
         name: object['first_name'] + ' ' + object['last_name']);
@@ -18,9 +18,14 @@ class GetSingleUser {
 
     var apiResult = await http.get(urlApi);
     var jsonObject = json.decode(apiResult.body);
+    Map user = jsonDecode(apiResult.body);
 
     var singelUserData = (jsonObject as Map<String, dynamic>)['data'];
+    var singelUserData2 = (jsonObject as Map)['data'];
 
-    return GetSingleUser.createSingleUser(singelUserData);
+    print(singelUserData);
+    print(singelUserData2);
+
+    return GetSingleUser.createSingleUser(jsonObject['data']);
   }
 }

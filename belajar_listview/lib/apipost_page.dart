@@ -1,4 +1,5 @@
 import 'package:belajar_listview/model/getapi_model.dart';
+import 'package:belajar_listview/model/getlistapi_model.dart';
 import 'package:belajar_listview/model/posapi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_listview/utils/extensions.dart';
@@ -11,6 +12,8 @@ class APIPostPage extends StatefulWidget {
 class _APIPostPageState extends State<APIPostPage> {
   PostResult postResult;
   GetSingleUser getSingleUser;
+
+  String listDataUser = 'Data kosong';
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,22 @@ class _APIPostPageState extends State<APIPostPage> {
                   });
                 },
                 child: Text("POST DATA"),
+              ),
+            ),
+            Container(
+              child: Text(listDataUser),
+            ),
+            Container(
+              child: RaisedButton(
+                onPressed: () {
+                  GetListDataUser.getListUserApi("2").then((value) {
+                    listDataUser = '';
+                    for (int i = 0; i < value.length; i++)
+                      listDataUser = listDataUser + "[" + value[i].name + "]";
+                    setState(() {});
+                  });
+                },
+                child: Text("Get List Data"),
               ),
             ),
             Container(
